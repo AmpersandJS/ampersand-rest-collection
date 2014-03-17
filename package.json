@@ -7,7 +7,12 @@
     "url": "https://github.com/ampersandjs/ampersand-rest-collection/issues"
   },
   "dependencies": {
-    "ampersand-collection": "0.x.x"
+    "ampersand-collection": "0.x.x",
+    "underscore": "1.x.x"
+  },
+  "devDependencies": {
+    "run-browser": "",
+    "tape": ""
   },
   "homepage": "https://github.com/ampersandjs/ampersand-rest-collection",
   "keywords": [
@@ -22,6 +27,7 @@
     "url": "git://github.com/ampersandjs/ampersand-rest-collection"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "run-browser test/main.js",
+    "test": "node test/main.js"
   }
 }
