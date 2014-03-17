@@ -1,0 +1,27 @@
+{
+  "name": "ampersand-rest-collection",
+  "description": "ampersand-collection with REST and Underscore mixins.",
+  "version": "0.0.0",
+  "author": "Henrik Joreteg <henrik@andyet.net>",
+  "bugs": {
+    "url": "https://github.com/ampersandjs/ampersand-rest-collection/issues"
+  },
+  "dependencies": {
+    "ampersand-collection": "0.x.x"
+  },
+  "homepage": "https://github.com/ampersandjs/ampersand-rest-collection",
+  "keywords": [
+    "collection",
+    "rest",
+    "models"
+  ],
+  "license": "MIT",
+  "main": "ampersand-rest-collection.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ampersandjs/ampersand-rest-collection"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
