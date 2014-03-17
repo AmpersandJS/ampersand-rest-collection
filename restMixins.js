@@ -1,4 +1,4 @@
-var sync = require('../ampersand-sync/ampersand-sync');
+var sync = require('ampersand-sync');
 
 
 // Wrap an optional error callback with a fallback error event.

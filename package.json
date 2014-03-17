@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "ampersand-collection": "0.x.x",
+    "ampersand-sync": "~0.1.2",
     "underscore": "1.x.x"
   },
   "devDependencies": {
