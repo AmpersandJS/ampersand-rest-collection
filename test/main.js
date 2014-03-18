@@ -9,5 +9,6 @@ test('basics', function (t) {
     var c = new Coll();
     t.ok(c);
     c.fetch();
+    t.ok(c.each);
     t.end();
 });
