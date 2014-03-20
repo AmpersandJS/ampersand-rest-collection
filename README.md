@@ -4,6 +4,10 @@ Extends ampersand-collection with REST and Underscore mixins.
 
 This makes ampersand-collection work and act a lot like Backbone.Collection, if you're planning on hitting a REST-ful API this is probably what you want to use.
 
+<!-- starthide -->
+Part of the [Ampersand.js toolkit](http://ampersandjs.com) for building clientside applications.
+<!-- endhide -->
+
 ## install
 
 ```
@@ -42,6 +46,7 @@ c.each(function (model) {
 });
 ```
 
+<!-- starthide -->
 ## credits
 
 If you like this follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) on twitter.
@@ -50,3 +55,4 @@ If you like this follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) on tw
 
 MIT
 
+<!-- endhide -->
