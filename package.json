@@ -7,10 +7,9 @@
     "url": "https://github.com/ampersandjs/ampersand-rest-collection/issues"
   },
   "dependencies": {
-    "ampersand-collection": "0.x.x",
-    "ampersand-collection-underscore-mixin": "0.x.x",
-    "ampersand-sync": "~0.1.2",
-    "underscore": "1.x.x"
+    "ampersand-collection": "^0.2.3",
+    "ampersand-collection-underscore-mixin": "^0.1.3",
+    "ampersand-collection-rest-mixin": "^0.1.0"
   },
   "devDependencies": {
     "run-browser": "",
