@@ -15,7 +15,8 @@
     "browserify": "*",
     "precommit-hook": "*",
     "run-browser": "*",
-    "tape": "*"
+    "tape": "*",
+    "tape-run": "*"
   },
   "homepage": "https://github.com/ampersandjs/ampersand-rest-collection",
   "keywords": [
