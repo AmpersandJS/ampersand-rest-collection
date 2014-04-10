@@ -7,13 +7,15 @@
     "url": "https://github.com/ampersandjs/ampersand-rest-collection/issues"
   },
   "dependencies": {
-    "ampersand-collection": "^0.2.3",
-    "ampersand-collection-rest-mixin": "^0.1.0",
-    "ampersand-collection-underscore-mixin": "^0.2.0"
+    "ampersand-collection": "^1.0.0",
+    "ampersand-collection-rest-mixin": "^1.0.0",
+    "ampersand-collection-underscore-mixin": "^1.0.0"
   },
   "devDependencies": {
-    "run-browser": "",
-    "tape": ""
+    "browserify": "*",
+    "precommit-hook": "*",
+    "run-browser": "*",
+    "tape": "*"
   },
   "homepage": "https://github.com/ampersandjs/ampersand-rest-collection",
   "keywords": [
@@ -28,7 +30,23 @@
     "url": "git://github.com/ampersandjs/ampersand-rest-collection"
   },
   "scripts": {
-    "start": "run-browser test/main.js",
-    "test": "node test/main.js"
+    "start": "run-browser test/*",
+    "test": "browserify test/* | tape-run"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": [
+      "ie/8..latest",
+      "firefox/17..latest",
+      "firefox/nightly",
+      "chrome/22..latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
   }
 }
