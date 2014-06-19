@@ -2,41 +2,42 @@
 
 Extends ampersand-collection with REST and Underscore mixins.
 
-This makes ampersand-collection work and act a lot like Backbone.Collection, if you're planning on hitting a REST-ful API this is probably what you want to use.
+This makes ampersand-collection work and act a lot like Backbone.Collection, if youre planning on hitting a REST-ful API this is probably what you want to use.
 
+<!-- starthide -->
 ## browser support 
 
 [![testling badge](https://ci.testling.com/AmpersandJS/ampersand-rest-collection.png)](https://ci.testling.com/AmpersandJS/ampersand-rest-collection)
 
-<!-- starthide -->
 Part of the [Ampersand.js toolkit](http://ampersandjs.com) for building clientside applications.
 <!-- endhide -->
 
-## install
+## Install
 
 ```
 npm install ampersand-rest-collection
 ```
 
+<!-- starthide -->
 ## example
 
 Define a collection
 
 ```javascript
-var Collection = require('ampersand-rest-collection');
-var Model = require('some-model');
+var Collection = require(ampersand-rest-collection);
+var Model = require(some-model);
 
 
 module.exports = Collection.extend({
     model: Model,
-    url: '/models'
+    url: /models
 });
 ```
 
 Using it:
 
 ```javascript
-var Collection = require('./path-to-your-collection-module');
+var Collection = require(./path-to-your-collection-module);
 
 
 var c = new Collection();
@@ -46,9 +47,153 @@ c.fetch();
 
 // also has underscore mixins
 c.each(function (model) {
-    console.log('model:', model);
+    console.log(model:, model);
 });
 ```
+<!-- endhide -->
+
+## API Reference
+
+The ampersand-rest-collection is simply an [ampersand-collection](#ampersand-collection) extended with two mixins: ampersand-collection-rest-mixin and ampersand-collection-underscore-mixin.
+
+```javascript
+var Collection = require(ampersand-collection);
+var underscoreMixin = require(ampersand-collection-underscore-mixin);
+var restMixins = require(ampersand-collection-rest-mixin);
+
+module.exports = Collection.extend(underscoreMixin, restMixins);
+```
+
+### ajaxConfig `AmpersandRestCollection.extend({ ajaxConfig: function () { ... } })`
+
+ampersand-sync will call ajaxConfig on your collection before it makes the request to the server, passing it the request parameters. When extending your own collection, set an ajaxConfig function to modify the request before it goes to the server. Useful for setting headers/CORS options etc.
+
+The function will be called with `params` as the first argument, which is the object which will be passed to the underling `jQuery.ajax` call by ampersand-sync.
+
+```javascript
+var MyCollection = AmpersandRestCollection.extend({
+    url: 'http://otherdomain.example.com/stuff',
+
+    ajaxConfig: function (params) {
+        //Enable CORS requests
+        params.crossDomain = true;
+
+        //Send cookies cross domain for auth
+        params.xhrFields = params.xhrFields || {};
+        params.xhrFields.withCredentials = true;
+
+        return params;
+    }
+});
+
+var collection = new MyCollection()
+collection.fetch();
+```
+
+### fetch `collection.fetch([options])`
+
+Fetch the default set of models for the collection from the server, [setting](#ampersand-collection-set) them on the collection when they arrive. If the collection already contains data, by default, the operation of [set](#ampersand-collection-set) will add new models from the server, merge the attributes of existing ones, and remove any which aren't in the response. This behaviour can be modified with the `reset`, `add`, `remove`, `merge` options.
+
+Options:
+
+* `success` {Function} [optional] - callback to be called if the request was successful, will be passed `(collection, response, options)` as arguments.
+* `error` {Function} [optional] - callback to be called if the request was not successful, will be passed `(collection, response, options)` as arguments.
+* `reset` {Boolean} [optional] - call [reset](#ampersand-collection-reset) instead of set with the models returned from the server, _defaults to false_.
+* `add` {Boolean} [optional] - (assuming `reset` is false), `{add: false}` prevents the call to `set` from adding new models retrieved from the server that aren't in the local collection. _Defaults to false_
+* `remove` {Boolean} [optional] - (assuming `reset` is false), `{remove: false}` prevents the call to `set` from removing models that are in the local collection but aren't returned by the server. _Defaults to false_
+* `merge` {Boolean} [optional] - (assuming `reset` is false), `{merge: false}` prevents the call to `set` from updating models in the local collection which have changed on the server. _Defaults to false_
+
+You can also pass any options that `jQuery.ajax` expects to modify the query. For example: to fetch a specific page of a paginated collection: `collection.fetch({ data: { page: 3 } })`
+
+### create `collection.create(model, [options])`
+
+Convenience to create a new instance of a model within a collection. Equivalent to instantiating a model with a hash of attributes, saving the model to the server, and adding the model to the set after being successfully created. Returns the new model. If client-side validation failed, the model will be unsaved, with validation errors. In order for this to work, you should set the `model` property of the collection. The create method can accept either an attributes hash or an existing, unsaved model object.
+
+Creating a model will cause an immediate ``"add"`` event to be triggered on the collection, a `"request"` event as the new model is sent to the server, as well as a `"sync"` event, once the server has responded with the successful creation of the model. Pass `{wait: true}` if you'd like to wait for the server before adding the new model to the collection.
+
+```
+var Library = AmpersandRestCollection.extend({
+  model: Book
+});
+
+var library = new Library;
+
+var othello = library.create({
+  title: "Othello",
+  author: "William Shakespeare"
+});
+```
+
+### sync `model.sync(method, collection, [options])`
+
+Simple delegation to ampersand-sync to persist the collection to the server. Can be overridden for custom behaviour.
+
+### underscore methods (42)
+
+The ampersand-collection-underscore-mixin proxies the collection methods in underscore onto the underlying models array for the collection. For example:
+
+```javascript
+books.each(function(book) {
+  book.publish();
+});
+
+var titles = books.map(function(book) {
+  return book.get("title");
+});
+
+var publishedBooks = books.filter(function(book) {
+  return book.get("published") === true;
+});
+
+var alphabetical = books.sortBy(function(book) {
+  return book.author.get("name").toLowerCase();
+});
+```
+
+The full list of proxied methods is:
+
+* [forEach](http://underscorejs.org/forEach)
+* [each](http://underscorejs.org/each)
+* [map](http://underscorejs.org/map)
+* [collect](http://underscorejs.org/collect)
+* [reduce](http://underscorejs.org/reduce)
+* [foldl](http://underscorejs.org/foldl)
+* [inject](http://underscorejs.org/inject)
+* [reduceRight](http://underscorejs.org/reduceRight)
+* [foldr](http://underscorejs.org/foldr)
+* [find](http://underscorejs.org/find)
+* [detect](http://underscorejs.org/detect)
+* [filter](http://underscorejs.org/filter)
+* [select](http://underscorejs.org/select)
+* [reject](http://underscorejs.org/reject)
+* [every](http://underscorejs.org/every)
+* [all](http://underscorejs.org/all)
+* [some](http://underscorejs.org/some)
+* [any](http://underscorejs.org/any)
+* [include](http://underscorejs.org/include)
+* [contains](http://underscorejs.org/contains)
+* [invoke](http://underscorejs.org/invoke)
+* [max](http://underscorejs.org/max)
+* [min](http://underscorejs.org/min)
+* [toArray](http://underscorejs.org/toArray)
+* [size](http://underscorejs.org/size)
+* [first](http://underscorejs.org/first)
+* [head](http://underscorejs.org/head)
+* [take](http://underscorejs.org/take)
+* [initial](http://underscorejs.org/initial)
+* [rest](http://underscorejs.org/rest)
+* [tail](http://underscorejs.org/tail)
+* [drop](http://underscorejs.org/drop)
+* [last](http://underscorejs.org/last)
+* [without](http://underscorejs.org/without)
+* [difference](http://underscorejs.org/difference)
+* [indexOf](http://underscorejs.org/indexOf)
+* [shuffle](http://underscorejs.org/shuffle)
+* [lastIndexOf](http://underscorejs.org/lastIndexOf)
+* [isEmpty](http://underscorejs.org/isEmpty)
+* [chain](http://underscorejs.org/chain)
+* [sample](http://underscorejs.org/sample)
+* [partition](http://underscorejs.org/partition)
 
 <!-- starthide -->
 ## credits
