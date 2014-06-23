@@ -105,6 +105,49 @@ Options:
 
 You can also pass any options that `jQuery.ajax` expects to modify the query. For example: to fetch a specific page of a paginated collection: `collection.fetch({ data: { page: 3 } })`
 
+### getOrFetch `collection.getOrFetch('id', [options], callback)`
+
+Convenience method for gets a model from the server or from the collection if it's already has a model with that id. 
+
+By default it will only fetch and add the model with the ID you pass in.
+
+```js
+collection.getOrFetch('42', function (err, model) {
+    if (err) {
+        console.log('handle');
+    } else {
+        // `model` here is a fully inflated model
+        // It gets added to the collection automatically.
+        // If the collection was empty before, it's got 1
+        // now.
+    }
+});
+```
+
+If you pass `{all: true}` it will fetch the entire collection (by calling its `fetch` method) and then do a `get` to attempt to pull out the model by the `id` you specified.
+
+```js
+collection.getOrFetch('42', {all: true}, function (err, model) {
+    if (err) {
+        console.log('handle');
+    } else {
+        // `model` here is a fully inflated model
+        // It gets added to the collection automatically. 
+    }
+});
+```
+
+### fetchById `collection.fetchById('id', callback)`
+
+Fetches and adds a model by id to the collection. This is what `getOrFetch` uses if it doesn't have a model already.
+
+```js
+collection.fetchById('42', function (err, model) {
+    // returns inflated, added model with a `null` error
+    // or an error object.
+});
+```
+
 ### create `collection.create(model, [options])`
 
 Convenience to create a new instance of a model within a collection. Equivalent to instantiating a model with a hash of attributes, saving the model to the server, and adding the model to the set after being successfully created. Returns the new model. If client-side validation failed, the model will be unsaved, with validation errors. In order for this to work, you should set the `model` property of the collection. The create method can accept either an attributes hash or an existing, unsaved model object.
