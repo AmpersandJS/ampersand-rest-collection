@@ -24,20 +24,20 @@ npm install ampersand-rest-collection
 Define a collection
 
 ```javascript
-var Collection = require(ampersand-rest-collection);
-var Model = require(some-model);
+var Collection = require("ampersand-rest-collection");
+var Model = require("some-model");
 
 
 module.exports = Collection.extend({
     model: Model,
-    url: /models
+    url: "/models"
 });
 ```
 
 Using it:
 
 ```javascript
-var Collection = require(./path-to-your-collection-module);
+var Collection = require("./path-to-your-collection-module");
 
 
 var c = new Collection();
@@ -47,7 +47,7 @@ c.fetch();
 
 // also has underscore mixins
 c.each(function (model) {
-    console.log(model:, model);
+    console.log("model:", model);
 });
 ```
 <!-- endhide -->
@@ -57,9 +57,9 @@ c.each(function (model) {
 The ampersand-rest-collection is simply an [ampersand-collection](#ampersand-collection) extended with two mixins: ampersand-collection-rest-mixin and ampersand-collection-underscore-mixin.
 
 ```javascript
-var Collection = require(ampersand-collection);
-var underscoreMixin = require(ampersand-collection-underscore-mixin);
-var restMixins = require(ampersand-collection-rest-mixin);
+var Collection = require("ampersand-collection");
+var underscoreMixin = require("ampersand-collection-underscore-mixin");
+var restMixins = require("ampersand-collection-rest-mixin");
 
 module.exports = Collection.extend(underscoreMixin, restMixins);
 ```
