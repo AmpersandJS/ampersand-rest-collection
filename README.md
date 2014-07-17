@@ -68,21 +68,44 @@ module.exports = Collection.extend(underscoreMixin, restMixins);
 
 ampersand-sync will call ajaxConfig on your collection before it makes the request to the server, passing it the request parameters. When extending your own collection, set an ajaxConfig function to modify the request before it goes to the server. Useful for setting headers/CORS options etc.
 
-The function will be called with `params` as the first argument, which is the object which will be passed to the underling `jQuery.ajax` call by ampersand-sync.
+You can pass either plain object or a function which will return object itself.
+This object will be passed to the underling `jQuery.ajax` call by ampersand-sync.
 
 ```javascript
 var MyCollection = AmpersandRestCollection.extend({
     url: 'http://otherdomain.example.com/stuff',
 
-    ajaxConfig: function (params) {
+    ajaxConfig: function () {
+        var params = {};
+
         //Enable CORS requests
         params.crossDomain = true;
 
         //Send cookies cross domain for auth
-        params.xhrFields = params.xhrFields || {};
-        params.xhrFields.withCredentials = true;
+        params.xhrFields =  {
+            withCredentials: true
+        };
 
         return params;
+    }
+});
+
+var collection = new MyCollection()
+collection.fetch();
+```
+
+```javascript
+var MyCollection = AmpersandRestCollection.extend({
+    url: 'http://otherdomain.example.com/stuff',
+
+    ajaxConfig: {
+        //Enable CORS requests
+        crossDomain: true,
+        
+        //Send cookies cross domain for auth
+        xhrFields: {
+            withCredentials: true
+        }
     }
 });
 
