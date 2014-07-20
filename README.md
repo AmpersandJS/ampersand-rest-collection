@@ -69,7 +69,7 @@ module.exports = Collection.extend(underscoreMixin, restMixins);
 ampersand-sync will call ajaxConfig on your collection before it makes the request to the server, passing it the request parameters. When extending your own collection, set an ajaxConfig function to modify the request before it goes to the server. Useful for setting headers/CORS options etc.
 
 You can pass either plain object or a function which will return object itself.
-This object will be passed to the underling `jQuery.ajax` call by ampersand-sync.
+This object will be passed to the underling xhr call by ampersand-sync.
 
 ```javascript
 var MyCollection = AmpersandRestCollection.extend({
@@ -126,7 +126,7 @@ Options:
 * `remove` {Boolean} [optional] - (assuming `reset` is false), `{remove: false}` prevents the call to `set` from removing models that are in the local collection but aren't returned by the server. _Defaults to false_
 * `merge` {Boolean} [optional] - (assuming `reset` is false), `{merge: false}` prevents the call to `set` from updating models in the local collection which have changed on the server. _Defaults to false_
 
-You can also pass any options that `jQuery.ajax` expects to modify the query. For example: to fetch a specific page of a paginated collection: `collection.fetch({ data: { page: 3 } })`
+You can also pass any options that [xhr](https://github.com/Raynos/xhr) expects to modify the query. For example: to fetch a specific page of a paginated collection: `collection.fetch({ data: { page: 3 } })`
 
 ### getOrFetch `collection.getOrFetch('id', [options], callback)`
 
