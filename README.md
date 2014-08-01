@@ -109,7 +109,7 @@ Options:
 * `remove` {Boolean} [optional] - (assuming `reset` is false), `{remove: false}` prevents the call to `set` from removing models that are in the local collection but aren't returned by the server. _Defaults to false_
 * `merge` {Boolean} [optional] - (assuming `reset` is false), `{merge: false}` prevents the call to `set` from updating models in the local collection which have changed on the server. _Defaults to false_
 
-You can also pass any options that `jQuery.ajax` expects to modify the query. For example: to fetch a specific page of a paginated collection: `collection.fetch({ data: { page: 3 } })`
+You can also pass any options that [xhr](https://github.com/Raynos/xhr) expects to modify the query. For example: to fetch a specific page of a paginated collection: `collection.fetch({ data: { page: 3 } })`
 
 ### getOrFetch `collection.getOrFetch('id', [options], callback)`
 
