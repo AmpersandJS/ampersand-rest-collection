@@ -66,23 +66,29 @@ module.exports = Collection.extend(underscoreMixin, restMixins);
 
 ### ajaxConfig `AmpersandRestCollection.extend({ ajaxConfig: function () { ... } })`
 
-ampersand-sync will call ajaxConfig on your collection before it makes the request to the server, passing it the request parameters. When extending your own collection, set an ajaxConfig function to modify the request before it goes to the server. Useful for setting headers/CORS options etc.
+ampersand-sync will call ajaxConfig on your collection before it makes the request to the server, and will merge in any options you return to the request. When extending your own collection, set an ajaxConfig function to modify the request before it goes to the server.
 
-The function will be called with `params` as the first argument, which is the object which will be passed to the underling `jQuery.ajax` call by ampersand-sync.
+ajaxConfig can either be an object, or a function that returns an object, with the following options:
+
+* `useXDR` [boolean]: (applies to IE8/9 only with cross domain requests): signifies that this is a cross-domain request and that IE should use it's XDomainRequest object. This is required if you're making cross-domain requests and want to support IE8/9). Note that XDR doesn't support headers/withCredentials.
+* `headers` [object]: any extra headers to send with the request.
+* `xhrFields` [object]: any fields to set directly on the [XHR](https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest) request object, most typically:
+    * `withCredentials` [boolean]: whether to send cross domain requests with authorization headers/cookies. Useful if you're making cross sub-domain requests with a root-domain auth cookie.
+* `beforeSend` [function]: beforeSend will be called before the request is made, and will be passed the raw `xhr` object if you wish to modify it directly before it's sent.
 
 ```javascript
 var MyCollection = AmpersandRestCollection.extend({
     url: 'http://otherdomain.example.com/stuff',
 
-    ajaxConfig: function (params) {
-        //Enable CORS requests
-        params.crossDomain = true;
-
-        //Send cookies cross domain for auth
-        params.xhrFields = params.xhrFields || {};
-        params.xhrFields.withCredentials = true;
-
-        return params;
+    ajaxConfig: function () {
+        return {
+            headers: {
+                'Access-Token': this.accessToken
+            },
+            xhrFields: {
+                'withCredentials: true
+            }
+        };
     }
 });
 
@@ -103,7 +109,7 @@ Options:
 * `remove` {Boolean} [optional] - (assuming `reset` is false), `{remove: false}` prevents the call to `set` from removing models that are in the local collection but aren't returned by the server. _Defaults to false_
 * `merge` {Boolean} [optional] - (assuming `reset` is false), `{merge: false}` prevents the call to `set` from updating models in the local collection which have changed on the server. _Defaults to false_
 
-You can also pass any options that `jQuery.ajax` expects to modify the query. For example: to fetch a specific page of a paginated collection: `collection.fetch({ data: { page: 3 } })`
+You can also pass any options that [xhr](https://github.com/Raynos/xhr) expects to modify the query. For example: to fetch a specific page of a paginated collection: `collection.fetch({ data: { page: 3 } })`
 
 ### getOrFetch `collection.getOrFetch('id', [options], callback)`
 
