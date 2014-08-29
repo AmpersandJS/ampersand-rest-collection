@@ -86,7 +86,7 @@ var MyCollection = AmpersandRestCollection.extend({
                 'Access-Token': this.accessToken
             },
             xhrFields: {
-                'withCredentials: true
+                withCredentials: true
             }
         };
     }
