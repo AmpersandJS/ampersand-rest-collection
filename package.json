@@ -1,7 +1,7 @@
 {
   "name": "ampersand-rest-collection",
   "description": "ampersand-collection with REST and Underscore mixins.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "Henrik Joreteg <henrik@andyet.net>",
   "bugs": {
     "url": "https://github.com/ampersandjs/ampersand-rest-collection/issues"
