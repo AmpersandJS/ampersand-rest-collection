@@ -5,7 +5,7 @@ Extends ampersand-collection with REST and Underscore mixins.
 This makes ampersand-collection work and act a lot like Backbone.Collection, if youre planning on hitting a REST-ful API this is probably what you want to use.
 
 <!-- starthide -->
-## browser support 
+## browser support
 
 [![testling badge](https://ci.testling.com/AmpersandJS/ampersand-rest-collection.png)](https://ci.testling.com/AmpersandJS/ampersand-rest-collection)
 
@@ -113,7 +113,7 @@ You can also pass any options that [xhr](https://github.com/Raynos/xhr) expects 
 
 ### getOrFetch `collection.getOrFetch('id', [options], callback)`
 
-Convenience method for gets a model from the server or from the collection if it's already has a model with that id. 
+Convenience method for gets a model from the server or from the collection if it's already has a model with that id.
 
 By default it will only fetch and add the model with the ID you pass in.
 
@@ -138,7 +138,7 @@ collection.getOrFetch('42', {all: true}, function (err, model) {
         console.log('handle');
     } else {
         // `model` here is a fully inflated model
-        // It gets added to the collection automatically. 
+        // It gets added to the collection automatically.
     }
 });
 ```
@@ -201,48 +201,48 @@ var alphabetical = books.sortBy(function(book) {
 
 The full list of proxied methods is:
 
-* [forEach](http://underscorejs.org/forEach)
-* [each](http://underscorejs.org/each)
-* [map](http://underscorejs.org/map)
-* [collect](http://underscorejs.org/collect)
-* [reduce](http://underscorejs.org/reduce)
-* [foldl](http://underscorejs.org/foldl)
-* [inject](http://underscorejs.org/inject)
-* [reduceRight](http://underscorejs.org/reduceRight)
-* [foldr](http://underscorejs.org/foldr)
-* [find](http://underscorejs.org/find)
-* [detect](http://underscorejs.org/detect)
-* [filter](http://underscorejs.org/filter)
-* [select](http://underscorejs.org/select)
-* [reject](http://underscorejs.org/reject)
-* [every](http://underscorejs.org/every)
-* [all](http://underscorejs.org/all)
-* [some](http://underscorejs.org/some)
-* [any](http://underscorejs.org/any)
-* [include](http://underscorejs.org/include)
-* [contains](http://underscorejs.org/contains)
-* [invoke](http://underscorejs.org/invoke)
-* [max](http://underscorejs.org/max)
-* [min](http://underscorejs.org/min)
-* [toArray](http://underscorejs.org/toArray)
-* [size](http://underscorejs.org/size)
-* [first](http://underscorejs.org/first)
-* [head](http://underscorejs.org/head)
-* [take](http://underscorejs.org/take)
-* [initial](http://underscorejs.org/initial)
-* [rest](http://underscorejs.org/rest)
-* [tail](http://underscorejs.org/tail)
-* [drop](http://underscorejs.org/drop)
-* [last](http://underscorejs.org/last)
-* [without](http://underscorejs.org/without)
-* [difference](http://underscorejs.org/difference)
-* [indexOf](http://underscorejs.org/indexOf)
-* [shuffle](http://underscorejs.org/shuffle)
-* [lastIndexOf](http://underscorejs.org/lastIndexOf)
-* [isEmpty](http://underscorejs.org/isEmpty)
-* [chain](http://underscorejs.org/chain)
-* [sample](http://underscorejs.org/sample)
-* [partition](http://underscorejs.org/partition)
+* [forEach](http://underscorejs.org#forEach)
+* [each](http://underscorejs.org#each)
+* [map](http://underscorejs.org#map)
+* [collect](http://underscorejs.org#collect)
+* [reduce](http://underscorejs.org#reduce)
+* [foldl](http://underscorejs.org#foldl)
+* [inject](http://underscorejs.org#inject)
+* [reduceRight](http://underscorejs.org#reduceRight)
+* [foldr](http://underscorejs.org#foldr)
+* [find](http://underscorejs.org#find)
+* [detect](http://underscorejs.org#detect)
+* [filter](http://underscorejs.org#filter)
+* [select](http://underscorejs.org#select)
+* [reject](http://underscorejs.org#reject)
+* [every](http://underscorejs.org#every)
+* [all](http://underscorejs.org#all)
+* [some](http://underscorejs.org#some)
+* [any](http://underscorejs.org#any)
+* [include](http://underscorejs.org#include)
+* [contains](http://underscorejs.org#contains)
+* [invoke](http://underscorejs.org#invoke)
+* [max](http://underscorejs.org#max)
+* [min](http://underscorejs.org#min)
+* [toArray](http://underscorejs.org#toArray)
+* [size](http://underscorejs.org#size)
+* [first](http://underscorejs.org#first)
+* [head](http://underscorejs.org#head)
+* [take](http://underscorejs.org#take)
+* [initial](http://underscorejs.org#initial)
+* [rest](http://underscorejs.org#rest)
+* [tail](http://underscorejs.org#tail)
+* [drop](http://underscorejs.org#drop)
+* [last](http://underscorejs.org#last)
+* [without](http://underscorejs.org#without)
+* [difference](http://underscorejs.org#difference)
+* [indexOf](http://underscorejs.org#indexOf)
+* [shuffle](http://underscorejs.org#shuffle)
+* [lastIndexOf](http://underscorejs.org#lastIndexOf)
+* [isEmpty](http://underscorejs.org#isEmpty)
+* [chain](http://underscorejs.org#chain)
+* [sample](http://underscorejs.org#sample)
+* [partition](http://underscorejs.org#partition)
 
 <!-- starthide -->
 ## credits
