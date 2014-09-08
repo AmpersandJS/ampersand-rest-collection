@@ -113,7 +113,7 @@ You can also pass any options that [xhr](https://github.com/Raynos/xhr) expects 
 
 ### getOrFetch `collection.getOrFetch('id', [options], callback)`
 
-Convenience method for gets a model from the server or from the collection if it's already has a model with that id.
+Convenience method. Gets a model from the server or from the collection if a model with that ID already exists.
 
 By default it will only fetch and add the model with the ID you pass in.
 
@@ -130,7 +130,7 @@ collection.getOrFetch('42', function (err, model) {
 });
 ```
 
-If you pass `{all: true}` it will fetch the entire collection (by calling its `fetch` method) and then do a `get` to attempt to pull out the model by the `id` you specified.
+If you pass `{all: true}` it will fetch the entire collection (by calling its `fetch` method) and then do a `get` to attempt to pull out the model by the ID you specified.
 
 ```js
 collection.getOrFetch('42', {all: true}, function (err, model) {
