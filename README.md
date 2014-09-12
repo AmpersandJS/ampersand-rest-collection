@@ -113,9 +113,9 @@ You can also pass any options that [xhr](https://github.com/Raynos/xhr) expects 
 
 ### getOrFetch `collection.getOrFetch('id', [options], callback)`
 
-Convenience method. Gets a model from the server or from the collection if a model with that ID already exists.
+Convenience method. Gets a model from the server or from the collection if a model with that id already exists.
 
-By default it will only fetch and add the model with the ID you pass in.
+By default it will only fetch and add the model with the id you pass in.
 
 ```js
 collection.getOrFetch('42', function (err, model) {
