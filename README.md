@@ -130,7 +130,7 @@ collection.getOrFetch('42', function (err, model) {
 });
 ```
 
-If you pass `{all: true}` it will fetch the entire collection (by calling its `fetch` method) and then do a `get` to attempt to pull out the model by the ID you specified.
+If you pass `{all: true}` it will fetch the entire collection (by calling its `fetch` method) and then do a `get` to attempt to pull out the model by the id you specified.
 
 ```js
 collection.getOrFetch('42', {all: true}, function (err, model) {
