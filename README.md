@@ -1,6 +1,6 @@
 # ampersand-rest-collection
 
-Extends ampersand-collection with REST and Underscore mixins.
+Extends ampersand-collection with REST and lodash mixins.
 
 This makes ampersand-collection work and act a lot like Backbone.Collection, if youre planning on hitting a REST-ful API this is probably what you want to use.
 
@@ -45,7 +45,7 @@ var c = new Collection();
 // call RESTful methods
 c.fetch();
 
-// also has underscore mixins
+// also has lodash mixins
 c.each(function (model) {
     console.log("model:", model);
 });
@@ -54,14 +54,14 @@ c.each(function (model) {
 
 ## API Reference
 
-The ampersand-rest-collection is simply an [ampersand-collection](#ampersand-collection) extended with two mixins: ampersand-collection-rest-mixin and ampersand-collection-underscore-mixin.
+The ampersand-rest-collection is simply an [ampersand-collection](#ampersand-collection) extended with two mixins: ampersand-collection-rest-mixin and ampersand-collection-lodash-mixin.
 
 ```javascript
 var Collection = require("ampersand-collection");
-var underscoreMixin = require("ampersand-collection-underscore-mixin");
+var lodashMixin = require("ampersand-collection-lodash-mixin");
 var restMixins = require("ampersand-collection-rest-mixin");
 
-module.exports = Collection.extend(underscoreMixin, restMixins);
+module.exports = Collection.extend(lodashMixin, restMixins);
 ```
 
 ### ajaxConfig `AmpersandRestCollection.extend({ ajaxConfig: function () { ... } })`
@@ -177,9 +177,9 @@ var othello = library.create({
 
 Simple delegation to ampersand-sync to persist the collection to the server. Can be overridden for custom behaviour.
 
-### underscore methods (42)
+### lodash methods (42)
 
-The ampersand-collection-underscore-mixin proxies the collection methods in underscore onto the underlying models array for the collection. For example:
+The ampersand-collection-lodash-mixin proxies the collection methods in lodash onto the underlying models array for the collection. For example:
 
 ```javascript
 books.each(function(book) {
@@ -201,48 +201,33 @@ var alphabetical = books.sortBy(function(book) {
 
 The full list of proxied methods is:
 
-* [forEach](http://underscorejs.org#forEach)
-* [each](http://underscorejs.org#each)
-* [map](http://underscorejs.org#map)
-* [collect](http://underscorejs.org#collect)
-* [reduce](http://underscorejs.org#reduce)
-* [foldl](http://underscorejs.org#foldl)
-* [inject](http://underscorejs.org#inject)
-* [reduceRight](http://underscorejs.org#reduceRight)
-* [foldr](http://underscorejs.org#foldr)
-* [find](http://underscorejs.org#find)
-* [detect](http://underscorejs.org#detect)
-* [filter](http://underscorejs.org#filter)
-* [select](http://underscorejs.org#select)
-* [reject](http://underscorejs.org#reject)
-* [every](http://underscorejs.org#every)
-* [all](http://underscorejs.org#all)
-* [some](http://underscorejs.org#some)
-* [any](http://underscorejs.org#any)
-* [include](http://underscorejs.org#include)
-* [contains](http://underscorejs.org#contains)
-* [invoke](http://underscorejs.org#invoke)
-* [max](http://underscorejs.org#max)
-* [min](http://underscorejs.org#min)
-* [toArray](http://underscorejs.org#toArray)
-* [size](http://underscorejs.org#size)
-* [first](http://underscorejs.org#first)
-* [head](http://underscorejs.org#head)
-* [take](http://underscorejs.org#take)
-* [initial](http://underscorejs.org#initial)
-* [rest](http://underscorejs.org#rest)
-* [tail](http://underscorejs.org#tail)
-* [drop](http://underscorejs.org#drop)
-* [last](http://underscorejs.org#last)
-* [without](http://underscorejs.org#without)
-* [difference](http://underscorejs.org#difference)
-* [indexOf](http://underscorejs.org#indexOf)
-* [shuffle](http://underscorejs.org#shuffle)
-* [lastIndexOf](http://underscorejs.org#lastIndexOf)
-* [isEmpty](http://underscorejs.org#isEmpty)
-* [chain](http://underscorejs.org#chain)
-* [sample](http://underscorejs.org#sample)
-* [partition](http://underscorejs.org#partition)
+* [forEach](http://lodash.com/docs#forEach)
+* [map](http://lodash.com/docs#map)
+* [reduce](http://lodash.com/docs#reduce)
+* [reduceRight](http://lodash.com/docs#reduceRight)
+* [find](http://lodash.com/docs#find)
+* [filter](http://lodash.com/docs#filter)
+* [reject](http://lodash.com/docs#reject)
+* [every](http://lodash.com/docs#every)
+* [some](http://lodash.com/docs#some)
+* [contains](http://lodash.com/docs#contains)
+* [invoke](http://lodash.com/docs#invoke)
+* [max](http://lodash.com/docs#max)
+* [min](http://lodash.com/docs#min)
+* [toArray](http://lodash.com/docs#toArray)
+* [size](http://lodash.com/docs#size)
+* [first](http://lodash.com/docs#first)
+* [initial](http://lodash.com/docs#initial)
+* [rest](http://lodash.com/docs#rest)
+* [last](http://lodash.com/docs#last)
+* [without](http://lodash.com/docs#without)
+* [difference](http://lodash.com/docs#difference)
+* [indexOf](http://lodash.com/docs#indexOf)
+* [shuffle](http://lodash.com/docs#shuffle)
+* [lastIndexOf](http://lodash.com/docs#lastIndexOf)
+* [isEmpty](http://lodash.com/docs#isEmpty)
+* [chain](http://lodash.com/docs#chain)
+* [sample](http://lodash.com/docs#sample)
 
 <!-- starthide -->
 ## credits
