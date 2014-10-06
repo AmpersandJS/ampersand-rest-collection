@@ -1,6 +1,6 @@
 {
   "name": "ampersand-rest-collection",
-  "description": "ampersand-collection with REST and Underscore mixins.",
+  "description": "ampersand-collection with REST and Lodash mixins.",
   "version": "2.0.3",
   "author": "Henrik Joreteg <henrik@andyet.net>",
   "bugs": {
@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "ampersand-collection": "^1.3.0",
-    "ampersand-collection-rest-mixin": "^3.0.0",
-    "ampersand-collection-underscore-mixin": "^1.0.0"
+    "ampersand-collection-lodash-mixin": "^1.0.2",
+    "ampersand-collection-rest-mixin": "^3.0.0"
   },
   "devDependencies": {
     "browserify": "^5.11.0",

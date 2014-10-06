@@ -1,6 +1,6 @@
 var Collection = require('ampersand-collection');
-var underscoreMixin = require('ampersand-collection-underscore-mixin');
+var lodashMixin = require('ampersand-collection-lodash-mixin');
 var restMixins = require('ampersand-collection-rest-mixin');
 
 
-module.exports = Collection.extend(underscoreMixin, restMixins);
+module.exports = Collection.extend(lodashMixin, restMixins);
