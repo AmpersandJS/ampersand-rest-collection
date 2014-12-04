@@ -243,6 +243,13 @@ The full list of proxied methods is:
 * [chain](http://underscorejs.org#chain)
 * [sample](http://underscorejs.org#sample)
 * [partition](http://underscorejs.org#partition)
+* [find](http://underscorejs.org#find)
+* [findWhere](http://underscorejs.org#findWhere)
+* [pluck](http://underscorejs.org#pluck)
+* [groupBy](http://underscorejs.org#groupBy)
+* [countBy](http://underscorejs.org#countBy)
+* [sortBy](http://underscorejs.org#sortBy)
+* [indexBy](http://underscorejs.org#indexBy)
 
 <!-- starthide -->
 ## credits
