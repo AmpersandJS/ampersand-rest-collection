@@ -16,7 +16,7 @@ test('existance of fetch methods basic functionality etc.', function (t) {
     t.end();
 });
 
-test('existance of underscore methods', function (t) {
+test('existance of lodash methods', function (t) {
     var c = new Collection();
     t.ok(c.find);
     t.ok(c.filter);
