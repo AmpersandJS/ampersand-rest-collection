@@ -35,7 +35,6 @@ Using it:
 ```javascript
 var Collection = require("./path-to-your-collection-module");
 
-
 var c = new Collection();
 
 // call RESTful methods
