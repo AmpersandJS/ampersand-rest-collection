@@ -5,10 +5,6 @@ Extends ampersand-collection with REST and Lodash mixins.
 This makes ampersand-collection work and act a lot like Backbone.Collection, if youre planning on hitting a REST-ful API this is probably what you want to use.
 
 <!-- starthide -->
-## browser support
-
-[![testling badge](https://ci.testling.com/AmpersandJS/ampersand-rest-collection.png)](https://ci.testling.com/AmpersandJS/ampersand-rest-collection)
-
 Part of the [Ampersand.js toolkit](http://ampersandjs.com) for building clientside applications.
 <!-- endhide -->
 
@@ -38,7 +34,6 @@ Using it:
 
 ```javascript
 var Collection = require("./path-to-your-collection-module");
-
 
 var c = new Collection();
 

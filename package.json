@@ -18,13 +18,11 @@
     "ampersand-version": "^1.0.2"
   },
   "devDependencies": {
-    "browserify": "^11.0.1",
-    "phantomjs": "^1.9.16",
+    "jshint": "^2.9.1",
+    "phantomjs": "^1.9.19",
     "precommit-hook": "^3.0.0",
-    "run-browser": "^2.0.2",
-    "tap-spec": "^4.0.2",
     "tape": "^4.0.3",
-    "tape-run": "^1.0.0"
+    "zuul": "^3.9.0"
   },
   "homepage": "https://github.com/ampersandjs/ampersand-rest-collection",
   "keywords": [
@@ -39,30 +37,15 @@
     "url": "git://github.com/ampersandjs/ampersand-rest-collection"
   },
   "scripts": {
-    "start": "run-browser test/*",
-    "test": "browserify test/* | tape-run | tap-spec",
+    "start": "zuul --local -- test/main.js",
+    "test": "zuul --phantom -- test/main.js",
+    "test-ci": "zuul -- test/main.js",
     "lint": "jshint .",
     "validate": "npm ls"
   },
   "files": [
     "ampersand-rest-collection.js"
   ],
-  "testling": {
-    "files": "test/*.js",
-    "browsers": [
-      "ie/8..latest",
-      "firefox/17..latest",
-      "firefox/nightly",
-      "chrome/22..latest",
-      "chrome/canary",
-      "opera/12..latest",
-      "opera/next",
-      "safari/5.1..latest",
-      "ipad/6.0..latest",
-      "iphone/6.0..latest",
-      "android-browser/4.2..latest"
-    ]
-  },
   "pre-commit": [
     "lint",
     "validate",
