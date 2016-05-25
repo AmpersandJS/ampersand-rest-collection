@@ -12,14 +12,14 @@
     "url": "https://github.com/ampersandjs/ampersand-rest-collection/issues"
   },
   "dependencies": {
-    "ampersand-collection": "^1.4.5",
-    "ampersand-collection-lodash-mixin": "^2.0.0",
-    "ampersand-collection-rest-mixin": "^5.0.0",
+    "ampersand-collection": "^2.0.0",
+    "ampersand-collection-lodash-mixin": "^4.0.0",
+    "ampersand-collection-rest-mixin": "^6.0.0",
     "ampersand-version": "^1.0.2"
   },
   "devDependencies": {
     "jshint": "^2.9.1",
-    "phantomjs": "^1.9.19",
+    "phantomjs": "^2.1.7",
     "precommit-hook": "^3.0.0",
     "tape": "^4.0.3",
     "zuul": "^3.9.0"
