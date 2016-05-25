@@ -1,7 +1,7 @@
 {
   "name": "ampersand-rest-collection",
   "description": "ampersand-collection with REST and Lodash mixins.",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "author": "Henrik Joreteg <henrik@andyet.net>",
   "browserify": {
     "transform": [
